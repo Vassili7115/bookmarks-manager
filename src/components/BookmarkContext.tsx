@@ -5,8 +5,9 @@ import { Bookmark } from "./BookmarkItem/BookmarkItem";
 import BookmarksList from "./BookmarkList/BookmarkList";
 
 export const BookmarkContext = createContext({
-  addBookmark: (bookmarkData: Bookmark, url: string) => {},
   bookmarks: [] as any,
+  addBookmark: (bookmarkData: Bookmark, url: string) => {},
+  deleteBookmark: (id: string) => {},
 });
 
 export default function BookmarkManager() {
@@ -30,11 +31,16 @@ export default function BookmarkManager() {
     ]);
   };
 
+  const deleteBookmark = (id: string) => {
+    setBookmarks(bookmarks.filter((bookmark: any) => bookmark.id !== id));
+  };
+
   return (
     <BookmarkContext.Provider
       value={{
         bookmarks,
         addBookmark,
+        deleteBookmark,
       }}
     >
       <div>

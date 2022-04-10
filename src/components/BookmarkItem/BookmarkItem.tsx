@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BookmarkContext } from "../BookmarkContext";
 
 export type Bookmark = {
   author_name: string;
   duration?: number;
   height?: number;
-  id?: string;
+  id: string;
   provider_name: "Flickr" | "Vimeo";
   thumbnail_url: string;
   title: string;
@@ -18,10 +19,12 @@ type BookmarkItemProps = {
 };
 
 export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
+  const { deleteBookmark } = useContext(BookmarkContext);
+
   return (
     <li>
       BookmarkItem
-      <button onClick={() => console.log("delete")}>Delete</button>
+      <button onClick={() => deleteBookmark(bookmark.id)}>Delete</button>
     </li>
   );
 }
