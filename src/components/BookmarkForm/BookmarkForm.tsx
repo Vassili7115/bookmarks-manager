@@ -5,8 +5,14 @@ export default function BookmarksForm() {
   const [bookmarkUrl, setBookmarkUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
+  const getBookmarkData = (bookmarkUrl: string) => {
+    fetch(`http://noembed.com/embed?url=${bookmarkUrl}`)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error("Request Failed", err));
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("e.target.value", e.target.value);
     setBookmarkUrl(e.target.value);
   };
 
@@ -15,6 +21,7 @@ export default function BookmarksForm() {
 
     const isValidUrl = bookmarkUrlValidation(bookmarkUrl);
     if (isValidUrl) {
+      getBookmarkData(bookmarkUrl);
       setErrorMessage(false);
     } else {
       setErrorMessage(true);
@@ -23,27 +30,21 @@ export default function BookmarksForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="bookmark-url">Add your url</label>
       <div>
-        <label htmlFor="bookmark-url">Add your url</label>
-        <div>
-          <input
-            id="bookmark-url"
-            name="bookmark-url"
-            type="text"
-            value={bookmarkUrl}
-            onChange={handleChange}
-            placeholder="exemple: https://www.flickr.com/"
-            autoFocus
-            required
-          />
-          <button>Add</button>
-        </div>
+        <input
+          id="bookmark-url"
+          name="bookmark-url"
+          type="text"
+          value={bookmarkUrl}
+          onChange={handleChange}
+          placeholder="exemple: https://www.flickr.com/"
+          autoFocus
+          required
+        />
+        <button>Add</button>
       </div>
-      {errorMessage && (
-        <div>
-          <p>Please enter a valid url</p>
-        </div>
-      )}
+      {errorMessage && <p>Please enter a valid url</p>}
     </form>
   );
 }
