@@ -1,13 +1,8 @@
 import React from "react";
-import BookmarksForm from "./components/BookmarkForm/BookmarkForm";
+import BookmarkContext from "./components/BookmarkContext";
 
 function App() {
-  return (
-    <>
-      <h1>Bookmarks Manager</h1>
-      <BookmarksForm />
-    </>
-  );
+  return <BookmarkContext />;
 }
 
 export default App;
