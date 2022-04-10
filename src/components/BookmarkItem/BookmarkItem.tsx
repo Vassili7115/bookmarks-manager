@@ -3,7 +3,7 @@ import { BookmarkContext } from "../BookmarkContext";
 
 export type Bookmark = {
   author_name: string;
-  duration?: number;
+  duration?: string;
   height?: number;
   id: string;
   provider_name: "Flickr" | "Vimeo";

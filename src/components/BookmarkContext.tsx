@@ -1,25 +1,40 @@
 import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { dateFormater } from "../utils/date";
+import { timeFormater } from "../utils/time";
 import BookmarksForm from "./BookmarkForm/BookmarkForm";
 import { Bookmark } from "./BookmarkItem/BookmarkItem";
 import BookmarksList from "./BookmarkList/BookmarkList";
 
+export type BookmarkData = {
+  author_name: string;
+  duration?: number;
+  height?: number;
+  provider_name: "Flickr" | "Vimeo";
+  thumbnail_url: string;
+  title: string;
+  upload_date?: string;
+  url?: string;
+  width?: number;
+};
+
 export const BookmarkContext = createContext({
   bookmarks: [] as any,
-  addBookmark: (bookmarkData: Bookmark, url: string) => {},
-  deleteBookmark: (id: string) => {},
+  addBookmark: (bookmarkData: BookmarkData, url: string): void => {},
+  deleteBookmark: (id: string): void => {},
 });
 
 export default function BookmarkManager() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
-  const addBookmark = (bookmarkData: Bookmark, url: string) => {
+  const addBookmark = (bookmarkData: BookmarkData, url: string) => {
     setBookmarks([
       ...bookmarks,
       {
         author_name: bookmarkData.author_name,
-        duration: bookmarkData.duration,
+        duration: bookmarkData.duration
+          ? timeFormater(bookmarkData.duration)
+          : "",
         height: bookmarkData.height,
         id: uuidv4(),
         provider_name: bookmarkData.provider_name,
