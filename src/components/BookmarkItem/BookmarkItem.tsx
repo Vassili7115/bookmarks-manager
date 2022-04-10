@@ -9,7 +9,7 @@ export type Bookmark = {
   provider_name: "Flickr" | "Vimeo";
   thumbnail_url: string;
   title: string;
-  upload_date?: number;
+  upload_date?: string;
   url: string;
   width?: number;
 };

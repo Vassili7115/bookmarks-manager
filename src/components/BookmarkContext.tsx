@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { dateFormater } from "../utils/date";
 import BookmarksForm from "./BookmarkForm/BookmarkForm";
 import { Bookmark } from "./BookmarkItem/BookmarkItem";
 import BookmarksList from "./BookmarkList/BookmarkList";
@@ -24,7 +25,9 @@ export default function BookmarkManager() {
         provider_name: bookmarkData.provider_name,
         thumbnail_url: bookmarkData.thumbnail_url,
         title: bookmarkData.title,
-        upload_date: bookmarkData.upload_date,
+        upload_date: bookmarkData.upload_date
+          ? dateFormater(bookmarkData.upload_date)
+          : "",
         url: bookmarkData.url || url,
         width: bookmarkData.width,
       },
