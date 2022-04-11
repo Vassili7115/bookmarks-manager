@@ -34,6 +34,7 @@ Dimension
 - Tailwind css for a rapid touch of style
 
 ----
+
 ## Setup : 
 
 To test you must type the following commands in the terminal : 
@@ -52,9 +53,9 @@ Enjoy the app!!
 https://bookmarks-manager-ea8gigc5x-vassili7115.vercel.app/
 
 ----
-## Screenshot
-<img src="https://zupimages.net/up/22/15/vlq5.png" width="512" height="303">
 
+## Screenshot
+<img src="https://zupimages.net/up/22/15/vlq5.png" width="800" height="450">
 
 ---
 
