@@ -34,21 +34,26 @@ export default function BookmarksForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="bookmark-url">Add your url</label>
-      <div>
-        <input
-          id="bookmark-url"
-          name="bookmark-url"
-          type="text"
-          value={bookmarkUrl}
-          onChange={handleChange}
-          placeholder="exemple: https://www.flickr.com/"
-          autoFocus
-          required
-        />
-        <button>Add</button>
+      <div className="flex flex-col w-fit items-start m-auto">
+        <label htmlFor="bookmark-url">Add your url</label>
+        <div className="flex flex-row w-fit	">
+          <input
+            autoFocus
+            className="text-black border border-black rounded-sm h-8 p-2 mr-1 w-96"
+            id="bookmark-url"
+            name="bookmark-url"
+            onChange={handleChange}
+            placeholder="exemple: https://www.flickr.com/"
+            required
+            type="text"
+            value={bookmarkUrl}
+          />
+          <button className="bg-klaxoon text-white h-8 w-16 rounded-sm">
+            Add
+          </button>
+        </div>
       </div>
-      {errorMessage && <p>Please enter a valid url</p>}
+      {errorMessage && <p className="text-klaxoon">Please enter a valid url</p>}
     </form>
   );
 }

@@ -62,8 +62,10 @@ export default function BookmarkManager() {
         deleteBookmark,
       }}
     >
-      <div>
-        <h1>Bookmarks Manager</h1>
+      <div className="text-center bg-klaxoon-bg w-full h-full">
+        <h1 className="text-white text-2xl font-bold pt-4 mb-6">
+          Bookmarks Manager
+        </h1>
         <BookmarksForm />
         {bookmarks && <BookmarksList />}
       </div>

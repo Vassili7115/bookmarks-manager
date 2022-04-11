@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import TrashIcon from "../../svg/Trash";
 import { convertMSInSeconds } from "../../utils/time";
 import { BookmarkContext } from "../BookmarkContext";
 
@@ -51,20 +52,41 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
   });
 
   return (
-    <li>
-        {thumbnail_url && <img src={thumbnail_url} alt={title} />}
-        <a href={url} rel="noreferrer noopener" target="_blank">
-          {url && <span>Url: {url}</span>}
+    <li className="flex flex-auto w-8/12 mx-auto my-7 border-4 p-2">
+      <div className="object-cover">
+        {thumbnail_url && (
+          <img className="w-32" src={thumbnail_url} alt={title} />
+        )}
+      </div>
+
+      <div className="flex flex-col	grow items-start pl-8">
+        <a
+          className="underline"
+          href={url}
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          {url && <span>{url}</span>}
         </a>
         {title && <span>Title: {title}</span>}
         {author_name && <span>Author: {author_name}</span>}
-        {upload_date && <span>UploadDate: {upload_date}</span>}
-        {isVimeo && duration && <span>duration: {duration}</span>}
-        {isFlickr && width && height && (
-          <span>Dimension: {width} x {height}</span>
-        )}
         {addedTime && <span>{addedTime}</span>}
-      <button onClick={() => deleteBookmark(id)}>Delete</button>
+        {upload_date && <span>Upload date: {upload_date}</span>}
+        {isVimeo && duration && <span>Duration: {duration}</span>}
+        {isFlickr && width && height && (
+          <span>
+            Dimension: {width} x {height}
+          </span>
+        )}
+      </div>
+
+      <button
+        className="flex items-center w-32 text-klaxoon"
+        onClick={() => deleteBookmark(id)}
+      >
+        <TrashIcon />
+        Delete
+      </button>
     </li>
   );
 }
