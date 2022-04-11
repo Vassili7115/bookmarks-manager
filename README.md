@@ -1,6 +1,8 @@
 # Bookmarks Manager
 It's a bookmark manager that takes Flickr and Vimeo type urls to display the following data depending on the type of url.
+
 You have the possibility to delete an added bookmark.
+
 It's possible to add a simple URL (other than Flickr or Vimeo) but depending on the type of url, it's possible that only the url will be used for the bookmark
 
 ### Viméo data
@@ -35,9 +37,12 @@ Dimension
 ## Setup : 
 
 To test you must type the following commands in the terminal : 
-- `git clone https://github.com/Vassili7115/bookmarks-manager.git`
-- `npm install`
-- `npm start`
+```
+git clone https://github.com/Vassili7115/bookmarks-manager.git
+cd bookmarks-manager
+npm install
+npm start
+```
 
 Enjoy the app!!
 
