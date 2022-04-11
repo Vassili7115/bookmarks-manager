@@ -32,6 +32,7 @@ export default function BookmarkManager() {
       ...bookmarks,
       {
         author_name: bookmarkData.author_name,
+        currentTime: Date.now(),
         duration: bookmarkData.duration
           ? timeFormater(bookmarkData.duration)
           : "",
