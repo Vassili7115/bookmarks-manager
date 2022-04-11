@@ -11,7 +11,7 @@ Preview (if available)
 URL
 Title
 Author
-Added date in the bookmars manager
+Added date in the bookmarks manager
 Upload date
 Duration 
 ```
@@ -22,7 +22,7 @@ Preview
 URL
 Title
 Author
-Added date in the bookmars manager
+Added date in the bookmarks manager
 Upload date
 Dimension 
 ```
