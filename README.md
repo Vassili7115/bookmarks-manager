@@ -47,13 +47,6 @@ npm start
 
 Enjoy the app!!
 
-----
-
-## Link of the deployed bookmark manager
-https://bookmarks-manager-ea8gigc5x-vassili7115.vercel.app/
-
-----
-
 ## Screenshot
 <img src="https://zupimages.net/up/22/15/vlq5.png" width="800" height="450">
 
