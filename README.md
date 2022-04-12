@@ -1,6 +1,8 @@
 # Bookmarks Manager
 It's a bookmark manager that takes Flickr and Vimeo type urls to display the following data depending on the type of url.
+
 You have the possibility to delete an added bookmark.
+
 It's possible to add a simple URL (other than Flickr or Vimeo) but depending on the type of url, it's possible that only the url will be used for the bookmark
 
 ### Viméo data
@@ -9,7 +11,7 @@ Preview (if available)
 URL
 Title
 Author
-Added date in the bookmars manager
+Added date in the bookmarks manager
 Upload date
 Duration 
 ```
@@ -20,7 +22,7 @@ Preview
 URL
 Title
 Author
-Added date in the bookmars manager
+Added date in the bookmarks manager
 Upload date
 Dimension 
 ```
@@ -32,24 +34,21 @@ Dimension
 - Tailwind css for a rapid touch of style
 
 ----
+
 ## Setup : 
 
 To test you must type the following commands in the terminal : 
-- `git clone https://github.com/Vassili7115/bookmarks-manager.git`
-- `npm install`
-- `npm start`
+```
+git clone https://github.com/Vassili7115/bookmarks-manager.git
+cd bookmarks-manager
+npm install
+npm start
+```
 
 Enjoy the app!!
 
-----
-
-## Link of the deployed bookmark manager
-https://bookmarks-manager-ea8gigc5x-vassili7115.vercel.app/
-
-----
 ## Screenshot
-<img src="https://zupimages.net/up/22/15/vlq5.png" width="512" height="303">
-
+<img src="https://zupimages.net/up/22/15/vlq5.png" width="800" height="450">
 
 ---
 
