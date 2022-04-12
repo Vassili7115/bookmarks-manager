@@ -19,7 +19,7 @@ export type BookmarkData = {
 };
 
 export const BookmarkContext = createContext({
-  bookmarks: [] as any,
+  bookmarks: [] as Bookmark[],
   addBookmark: (bookmarkData: BookmarkData, url: string): void => {},
   deleteBookmark: (id: string): void => {},
 });
@@ -27,31 +27,39 @@ export const BookmarkContext = createContext({
 export default function BookmarkManager() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
-  const addBookmark = (bookmarkData: BookmarkData, url: string) => {
+  const addBookmark = (bookmarkData: BookmarkData, defaultUrl: string) => {
+    const {
+      author_name,
+      duration,
+      height,
+      provider_name,
+      thumbnail_url,
+      title,
+      upload_date,
+      url,
+      width,
+    } = bookmarkData;
+
     setBookmarks([
       ...bookmarks,
       {
-        author_name: bookmarkData.author_name,
+        author_name,
         currentTime: Date.now(),
-        duration: bookmarkData.duration
-          ? timeFormater(bookmarkData.duration)
-          : "",
-        height: bookmarkData.height,
+        duration: duration ? timeFormater(duration) : "",
+        height,
         id: uuidv4(),
-        provider_name: bookmarkData.provider_name,
-        thumbnail_url: bookmarkData.thumbnail_url,
-        title: bookmarkData.title,
-        upload_date: bookmarkData.upload_date
-          ? dateFormater(bookmarkData.upload_date)
-          : "",
-        url: bookmarkData.url || url,
-        width: bookmarkData.width,
+        provider_name,
+        thumbnail_url,
+        title,
+        upload_date: upload_date ? dateFormater(upload_date) : "",
+        url: url || defaultUrl,
+        width,
       },
     ]);
   };
 
   const deleteBookmark = (id: string) => {
-    setBookmarks(bookmarks.filter((bookmark: any) => bookmark.id !== id));
+    setBookmarks(bookmarks.filter((bookmark: Bookmark) => bookmark.id !== id));
   };
 
   return (
