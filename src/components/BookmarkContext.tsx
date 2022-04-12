@@ -40,18 +40,21 @@ export default function BookmarkManager() {
       width,
     } = bookmarkData;
 
+    const contentDuration = duration ? timeFormater(duration) : "";
+    const uploadDate = upload_date ? dateFormater(upload_date) : "";
+
     setBookmarks([
       ...bookmarks,
       {
-        author_name,
+        authorName: author_name,
         currentTime: Date.now(),
-        duration: duration ? timeFormater(duration) : "",
+        contentDuration,
         height,
         id: uuidv4(),
-        provider_name,
-        thumbnail_url,
+        providerName: provider_name,
+        thumbnailUrl: thumbnail_url,
         title,
-        upload_date: upload_date ? dateFormater(upload_date) : "",
+        uploadDate,
         url: url || defaultUrl,
         width,
       },

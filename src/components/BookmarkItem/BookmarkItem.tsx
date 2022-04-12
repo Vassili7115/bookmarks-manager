@@ -4,15 +4,15 @@ import { convertMSInSeconds } from "../../utils/time";
 import { BookmarkContext } from "../BookmarkContext";
 
 export type Bookmark = {
-  author_name: string;
+  authorName: string;
   currentTime: number;
-  duration?: string;
+  contentDuration?: string;
   height?: number;
   id: string;
-  provider_name: "Flickr" | "Vimeo";
-  thumbnail_url: string;
+  providerName: "Flickr" | "Vimeo";
+  thumbnailUrl: string;
   title: string;
-  upload_date?: string;
+  uploadDate?: string;
   url: string;
   width?: number;
 };
@@ -26,21 +26,21 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
   const [addedTime, setAddedTime] = useState("Added just now");
 
   const {
-    author_name,
+    authorName,
     currentTime,
-    duration,
+    contentDuration,
     height,
     id,
-    provider_name,
-    thumbnail_url,
+    providerName,
+    thumbnailUrl,
     title,
-    upload_date,
+    uploadDate,
     url,
     width,
   } = bookmark;
 
-  const isVimeo = provider_name === "Vimeo";
-  const isFlickr = provider_name === "Flickr";
+  const isVimeo = providerName === "Vimeo";
+  const isFlickr = providerName === "Flickr";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,8 +54,8 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
   return (
     <li className="flex flex-auto w-8/12 mx-auto my-7 border-4 p-2">
       <div className="object-cover">
-        {thumbnail_url && (
-          <img className="w-32" src={thumbnail_url} alt={title} />
+        {thumbnailUrl && (
+          <img className="w-32" src={thumbnailUrl} alt={title} />
         )}
       </div>
 
@@ -69,10 +69,10 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
           {url && <span>{url}</span>}
         </a>
         {title && <span>Title: {title}</span>}
-        {author_name && <span>Author: {author_name}</span>}
+        {authorName && <span>Author: {authorName}</span>}
         {addedTime && <span>{addedTime}</span>}
-        {upload_date && <span>Upload date: {upload_date}</span>}
-        {isVimeo && duration && <span>Duration: {duration}</span>}
+        {uploadDate && <span>Upload date: {uploadDate}</span>}
+        {isVimeo && contentDuration && <span>Duration: {contentDuration}</span>}
         {isFlickr && width && height && (
           <span>
             Dimension: {width} x {height}
