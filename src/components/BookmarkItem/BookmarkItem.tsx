@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import TrashIcon from "../../svg/Trash";
-import { convertMSInSeconds } from "../../utils/time";
+import { convertMStoTime } from "../../utils/time";
 import { BookmarkContext } from "../BookmarkContext";
 
 export type Bookmark = {
@@ -23,7 +23,7 @@ type BookmarkItemProps = {
 
 export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
   const { deleteBookmark } = useContext(BookmarkContext);
-  const [addedTime, setAddedTime] = useState("Added just now");
+  const [addedTime, setAddedTime] = useState("");
 
   const {
     authorName,
@@ -44,7 +44,7 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const timeElapsed = convertMSInSeconds(currentTime);
+      const timeElapsed = convertMStoTime(currentTime);
       setAddedTime(timeElapsed);
     }, 1000);
 
@@ -81,6 +81,7 @@ export default function BookmarkItem({ bookmark }: BookmarkItemProps) {
       </div>
 
       <button
+        type="button"
         className="flex items-center w-32 text-klaxoon"
         onClick={() => deleteBookmark(id)}
       >

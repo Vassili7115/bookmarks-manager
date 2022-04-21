@@ -5,25 +5,28 @@ export const timeFormater = (contentDuration: number): string => {
   return `${hours}:${minutes}:${seconds}`;
 };
 
-export const convertMSInSeconds = (currentTime: number): string => {
-  let timeElapsed;
+export const convertMStoTime = (currentTime: number): string => {
   const time = Date.now();
-
-  timeElapsed = time - currentTime;
-
+  const timeElapsed = time - currentTime;
   const getAddedTime = Math.round(timeElapsed / 1000);
+  const relativeTimeFormat = new Intl.RelativeTimeFormat("en", {
+    style: "long",
+  });
 
   if (getAddedTime < 60) {
-    return "added less than 1 minute ago";
+    return relativeTimeFormat.format(-getAddedTime, "seconds");
   }
   if (getAddedTime >= 60 && getAddedTime < 3600) {
-    return `added ${Math.round(getAddedTime / 60)} minutes ago`;
+    return relativeTimeFormat.format(Math.round(-getAddedTime / 60), "minutes");
   }
+
   if (getAddedTime >= 3600 && getAddedTime < 86400) {
-    return `added ${Math.round(getAddedTime / 3600)} hours ago`;
+    return relativeTimeFormat.format(Math.round(-getAddedTime / 3600), "hours");
   }
-  if (getAddedTime >= 86400 && getAddedTime < 604800) {
-    return `added ${Math.round(getAddedTime / 86400)} days ago`;
+
+  if (getAddedTime >= 86400) {
+    return relativeTimeFormat.format(Math.round(-getAddedTime / 86400), "days");
   }
+
   return "It's been a while";
 };

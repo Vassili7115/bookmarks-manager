@@ -48,7 +48,10 @@ export default function BookmarksForm() {
             type="text"
             value={bookmarkUrl}
           />
-          <button className="bg-klaxoon text-white h-8 w-16 rounded-sm">
+          <button
+            type="submit"
+            className="bg-klaxoon text-white h-8 w-16 rounded-sm"
+          >
             Add
           </button>
         </div>
